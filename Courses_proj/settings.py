@@ -30,7 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [ 'apps.DojoCourses_app',
+INSTALLED_APPS = [
+    'apps.DojoCourses_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

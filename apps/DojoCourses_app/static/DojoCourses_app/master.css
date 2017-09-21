@@ -1,1 +1,18 @@
-body { background-color:pink }
+body { background-color:tan }
+
+.newCoursesBox {
+    width: 50%;
+    padding-left: 10%
+}
+
+.AddButton {
+
+}
+
+input {
+    display: block;
+}
+
+.DeleteSubmit {
+    background-color: red;
+}

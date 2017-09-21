@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Delete a course?</title>
+        <link rel="stylesheet" href="/static/DojoCourses_app/master.css">
+    </head>
+    <body>
+        <h1>Are you sure you want to delete the following course?</h1>
+        <div class="column1">
+            <label for="Name">Name:</label>
+            <label for="Description">Description:</label>
+        </div>
+        <div class="column2">
+            <input type="text" name="Name" value="{{course.name}}">
+            <input type="text" name="Description" value="{{course.DescObj.description}}">
+        </div>
+        <form class="" action="/" method="post">
+             {% csrf_token %}
+            <button type="submit" name="submit">No</button>
+        </form>
+        <form class="" action="/{{course.id}}/yesDestroy" method="post">
+             {% csrf_token %}
+            <button type="submit" name="DeleteSubmit">Yes! I want to delete this</button>
+        </form>
+    </body>
+</html>

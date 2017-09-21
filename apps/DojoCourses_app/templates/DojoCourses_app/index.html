@@ -1,1 +1,58 @@
-You Found index.html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Add a student to all bootcamp courses</title>
+    <link rel="stylesheet" href="/static/DojoCourses_app/master.css">
+</head>
+
+<body>
+    <div class="ErrorBox">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <h1>Add a new course</h1>
+    <div class="newCoursesBox">
+        <form class="" action="/addcourse" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" name="name" required=True placeholder="Course name: atleast 5 characters." min=5 max=55 value="">
+            <br>
+            <label for="Description">Description:</label>
+            <input type="text" name="description" required=True placeholder="Description: atleast 16 characters." min=16 max=400 value="">
+            <br>
+            <button class="AddButton" type="submit" name="submit">Add</button>
+        </form>
+    </div>
+    <h1>Courses</h1>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+        {% for course in courses %}
+        <tr>
+            <td>{{course.id}}</td>
+            <td><a href="/courses/{{course.id}}">{{course.name}}</a></td>
+            <td>{{course.DescObj.description}}</td>
+            <td>{{course.created_at}}</td>
+            <td>{{course.updated_at}}</td>
+            <td>
+                <a href="/courses/{{course.id}}/destroy">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
